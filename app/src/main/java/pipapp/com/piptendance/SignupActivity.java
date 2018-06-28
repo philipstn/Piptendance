@@ -13,9 +13,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import pipapp.com.piptendance.Model.User;
 
 public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
     TextInputEditText tietUsername, tietEmail, tietPassword, tietConfirmPassword;
     String Username, Email, Password, ConfirmPassword;
 
@@ -28,6 +34,7 @@ public class SignupActivity extends AppCompatActivity {
         tietPassword = findViewById(R.id.tietPassword);
         tietConfirmPassword = findViewById(R.id.tietConfirmPassword);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -40,7 +47,11 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
+//                            FirebaseUser user = mAuth.getCurrentUser();
+                            String uid = mAuth.getUid();
+                            User users = new User();
+                            users.setUsername(Username);
+                            mDatabase.child("User").child(String.valueOf(uid)).setValue(users);
 
                         } else {
                             Toast.makeText(SignupActivity.this, "failed", Toast.LENGTH_SHORT).show();
