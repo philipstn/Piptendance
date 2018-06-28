@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1064629892999",
+    "firebase_url": "https://piptendance.firebaseio.com",
+    "project_id": "piptendance",
+    "storage_bucket": "piptendance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064629892999:android:a49b411725bb6666",
+        "android_client_info": {
+          "package_name": "pipapp.com.piptendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064629892999-q605nem38140d9d6gdaj031lidk8t4qe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pipapp.com.piptendance",
+            "certificate_hash": "0e2672aef178185e3bb5a46a6d33451ba4229eb0"
+          }
+        },
+        {
+          "client_id": "1064629892999-m24r78ig06k42avnkk8an8pfffqdq7oj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDU5K0_uO4PgKlysOuJCd1ZdHzBxXxdPQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064629892999-m24r78ig06k42avnkk8an8pfffqdq7oj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
