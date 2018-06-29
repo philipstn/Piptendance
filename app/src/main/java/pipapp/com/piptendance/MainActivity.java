@@ -1,6 +1,7 @@
 package pipapp.com.piptendance;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,6 +23,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.AbstractCollection;
+
+import pipapp.com.piptendance.Fragment.AbsenceFragment;
+import pipapp.com.piptendance.Fragment.ReviewFragment;
 import pipapp.com.piptendance.Model.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     TextView Username;
-    String usernameTemp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,5 +105,19 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(i);
         finish();
+    }
+
+    public void btnAbsence(MenuItem item) {
+        setTitle("Absence");
+        AbsenceFragment absenceFragment = new AbsenceFragment();
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, absenceFragment).commit();
+    }
+
+    public void btnReview(MenuItem item) {
+        setTitle("Review");
+        ReviewFragment reviewFragment = new ReviewFragment();
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, reviewFragment).commit();
     }
 }

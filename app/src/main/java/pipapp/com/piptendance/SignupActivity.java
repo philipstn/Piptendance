@@ -1,6 +1,5 @@
 package pipapp.com.piptendance;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
@@ -12,7 +11,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -47,11 +45,12 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-//                            FirebaseUser user = mAuth.getCurrentUser();
                             String uid = mAuth.getUid();
                             User users = new User();
                             users.setUsername(Username);
                             mDatabase.child("User").child(String.valueOf(uid)).setValue(users);
+                            FirebaseAuth.getInstance().signOut();
+                            Toast.makeText(SignupActivity.this, "Account Successfully created!", Toast.LENGTH_SHORT).show();
                             finish();
 
                         } else {

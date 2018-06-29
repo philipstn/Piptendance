@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
 
         if (currentUser!= null) {
             Intent i = new Intent(LoginActivity.this, MainActivity.class);
-//            i.putExtra("user", currentUser);
             startActivity(i);
         }
     }

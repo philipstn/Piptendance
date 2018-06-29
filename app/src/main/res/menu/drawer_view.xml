@@ -3,6 +3,14 @@
 
 
     <group android:checkableBehavior="single">
+        <item android:id="@+id/absence"
+            android:onClick="btnAbsence"
+            android:title="Absence"></item>
+
+        <item android:id="@+id/review"
+            android:onClick="btnReview"
+            android:title="Review my Attendance"></item>
+
         <item
             android:id="@+id/logout"
             android:onClick="btnLogout"
