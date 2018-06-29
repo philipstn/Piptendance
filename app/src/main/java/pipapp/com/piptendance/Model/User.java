@@ -1,13 +1,13 @@
 package pipapp.com.piptendance.Model;
 
 public class User {
-    private String Username;
+    private String username;
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 }

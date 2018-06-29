@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -40,27 +41,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dl = findViewById(R.id.dl);
         nv = findViewById(R.id.nv);
-        Username = findViewById(R.id.tvUsername);
+        View view = nv.getHeaderView(0);
+        Username = view.findViewById(R.id.tvUsername);
 
-        Username.setText("yuhu");
         mAuth = FirebaseAuth.getInstance();
-        mAuth.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-/*        mDatabase.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        String uid = mAuth.getUid();
+
+        mDatabase.child("User").child(uid).child("username").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = new User();
-                String nama = user.getUsername();
-
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String nama = String.valueOf(dataSnapshot.getValue());
+                Username.setText(nama);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
 
         toolbar =  findViewById(R.id.toolbar);
@@ -99,5 +99,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         Intent i = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(i);
+        finish();
     }
 }

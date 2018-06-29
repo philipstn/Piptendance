@@ -52,6 +52,7 @@ public class SignupActivity extends AppCompatActivity {
                             User users = new User();
                             users.setUsername(Username);
                             mDatabase.child("User").child(String.valueOf(uid)).setValue(users);
+                            finish();
 
                         } else {
                             Toast.makeText(SignupActivity.this, "failed", Toast.LENGTH_SHORT).show();

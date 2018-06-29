@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (currentUser!= null) {
             Intent i = new Intent(LoginActivity.this, MainActivity.class);
-            i.putExtra("user", currentUser);
+//            i.putExtra("user", currentUser);
             startActivity(i);
         }
     }
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                            i.putExtra("user", user);
+//                            i.putExtra("user", user);
                             startActivity(i);
 //                            updateUI(user);
                         } else {
